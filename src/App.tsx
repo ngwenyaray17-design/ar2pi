@@ -15,11 +15,27 @@ function App() {
   const [submitted, setSubmitted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      setSubmitted(true);
-      setEmail('');
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        if (response.ok) {
+          setSubmitted(true);
+          setEmail('');
+        } else {
+          console.error('Failed to join waitlist');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
   };
 
