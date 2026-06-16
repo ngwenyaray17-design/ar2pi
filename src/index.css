@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0D7C7C;
+  --color-secondary: #5BA8D5;
+  --color-accent: #E8836A;
+  --color-neutral: #F7F5F2;
+  --color-text: #4A4642;
+  --color-heading: #1A1816;
+  
+  --font-inter: "Inter", sans-serif;
+  --font-lato: "Lato", sans-serif;
+  
+  --radius-custom: 8px;
+}
+
+@layer base {
+  body {
+    @apply font-lato text-text bg-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-inter text-heading font-bold;
+  }
+}
