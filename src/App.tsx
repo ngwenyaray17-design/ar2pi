@@ -19,7 +19,7 @@ function App() {
     e.preventDefault();
     if (email) {
       try {
-        const response = await fetch('/api/waitlist', {
+        const response = await fetch('http://localhost:3001/api/waitlist', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
