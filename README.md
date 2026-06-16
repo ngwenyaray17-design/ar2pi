@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# VitalLink Health 🏥
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Concierge healthcare navigation — find specialists, book appointments faster, manage medical records.**
 
-Currently, two official plugins are available:
+A full-stack landing page + waitlist system for a healthcare navigation service. Built with Vite, React, TypeScript, Tailwind CSS, and a lightweight Express API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Start the backend (port 3001)
+```bash
+cd server
+npm install
+node server.js
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Start the frontend (port 3000)
+```bash
+npm install
+npm run dev
 ```
+
+The Vite dev server proxies `/api` requests to the backend automatically.
+
+---
+
+## What's Included
+
+### Brand Identity
+- Logo (3 variants: full, horizontal, symbol-only)
+- Color palette: Deep Teal (#0D7C7C), Soft Sky (#5BA8D5), Warm Coral (#E8836A)
+- Typography: Inter (headings), Lato (body)
+- Full brand guidelines document
+
+### Landing Page
+- Responsive design (mobile + desktop)
+- Hero section with tagline: "Your health navigated. Stress-free."
+- Service cards: Specialist Search, Appointment Booking, Medical Records
+- "How It Works" step-by-step section
+- Testimonials section
+- Waitlist email signup form
+
+### Waitlist Backend
+- `POST /api/waitlist` — capture emails with timestamps
+- `GET /api/waitlist` — retrieve all signups
+- JSON file storage (persistent, no database needed)
+
+### Tech Stack
+- **Frontend:** Vite + React + TypeScript + Tailwind CSS v4
+- **Backend:** Node.js + Express
+- **Icons:** Lucide React
+
+---
+
+## Project Structure
+```
+ar2pi/
+├── public/          # Static assets (logo, favicon)
+├── server/          # Express API backend
+│   ├── server.js    # API endpoints
+│   ├── package.json
+│   └── waitlist.json # Captured emails
+├── src/             # React app
+│   ├── App.tsx      # Main landing page component
+│   ├── App.css      # Component styles
+│   ├── index.css    # Tailwind config + brand theme
+│   └── main.tsx     # Entry point
+├── index.html       # HTML shell
+├── vite.config.ts   # Vite + API proxy config
+└── package.json
+```
+
+---
+
+## Revenue Model
+- **Monthly subscription:** $29–$49/mo (individual/family)
+- **Per-service fees:** $19/appointment booking, $49/care plan review
+
+---
+
+## Built for Marketplace
+This business is ready to be acquired and operated. Next steps for the new owner:
+1. Merge the feature branches to `main`
+2. Deploy the landing page (Vercel, Netlify, or Railway)
+3. Connect Stripe for payments
+4. Set up subscription products
+
+---
+
+© 2026 VitalLink Health
